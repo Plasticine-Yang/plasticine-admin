@@ -8,7 +8,6 @@
   },
   "include": [
     "vite.config.ts",
-    "types/*.d.ts",
     "build/**/*.ts"
   ]
 }

@@ -12,5 +12,7 @@ declare module '@vue/runtime-core' {
     HelloUnocss: typeof import('./../src/components/HelloUnocss.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
