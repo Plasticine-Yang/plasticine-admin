@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    HelloIconify: typeof import('./../src/components/HelloIconify.vue')['default']
     HelloNaiveUi: typeof import('./../src/components/HelloNaiveUi.vue')['default']
     HelloUnocss: typeof import('./../src/components/HelloUnocss.vue')['default']
     NButton: typeof import('naive-ui')['NButton']

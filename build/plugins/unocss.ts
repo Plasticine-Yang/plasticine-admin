@@ -1,3 +1,11 @@
 import Unocss from 'unocss/vite'
+import { presetUno, presetAttributify, presetIcons } from 'unocss'
 
-export default () => Unocss()
+const iconsPreset = presetIcons()
+const unoPreset = presetUno()
+const attributifyPreset = presetAttributify()
+
+export default () =>
+  Unocss({
+    presets: [unoPreset, attributifyPreset, iconsPreset],
+  })
