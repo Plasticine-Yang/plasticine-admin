@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
+  '@types/node': ^18.0.6
   '@typescript-eslint/eslint-plugin': ^5.30.6
   '@typescript-eslint/parser': ^5.30.6
   '@vitejs/plugin-vue': ^3.0.0
@@ -25,6 +26,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
+  '@types/node': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.30.6_b7n364ggt6o4xlkgyoaww3ph3q
   '@typescript-eslint/parser': 5.30.6_he2ccbldppg44uulnyq4rwocfa
   '@vitejs/plugin-vue': 3.0.0_vite@3.0.0+vue@3.2.37
