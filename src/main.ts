@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+
 import { setupAssets } from './setup'
 
 function setupApp(appQuerySelector: string) {

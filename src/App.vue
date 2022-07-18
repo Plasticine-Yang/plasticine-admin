@@ -1,7 +1,5 @@
-<script setup lang="ts">
-import HelloUnocss from './components/HelloUnocss.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <HelloUnocss />
+  <HelloNaiveUi />
 </template>
