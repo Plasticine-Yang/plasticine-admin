@@ -1,5 +1,15 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
+import { setupAssets } from './setup'
 
-createApp(App).mount('#app')
+function setupApp(appQuerySelector: string) {
+  // 处理静态资源的加载 比如 css
+  setupAssets()
+
+  // app
+  const app = createApp(App)
+
+  app.mount(appQuerySelector)
+}
+
+setupApp('#app')
