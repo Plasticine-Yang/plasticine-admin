@@ -1,6 +1,7 @@
 import themeJson from './theme.json'
 
 const defaultThemeSetting: Theme.Setting = {
+  darkMode: false,
   themeColor: '#24283b',
 }
 
