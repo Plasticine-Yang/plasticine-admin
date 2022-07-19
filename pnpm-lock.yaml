@@ -9,6 +9,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.30.6
   '@typescript-eslint/parser': ^5.30.6
   '@vitejs/plugin-vue': ^3.0.0
+  colord: ^2.9.2
   commitlint: ^17.0.3
   eslint: ^8.20.0
   eslint-config-prettier: ^8.5.0
@@ -32,6 +33,7 @@ specifiers:
   vue-tsc: ^0.38.4
 
 dependencies:
+  colord: 2.9.2
   lodash-es: 4.17.21
   pinia: 2.0.16_j6bzmzd4ujpabbp5objtwxyjp4
   vue: 3.2.37
@@ -1168,6 +1170,10 @@ packages:
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
+
+  /colord/2.9.2:
+    resolution: {integrity: sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==}
+    dev: false
 
   /colorette/2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
