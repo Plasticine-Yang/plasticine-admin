@@ -14,5 +14,9 @@ export default defineConfig(({ mode }) => {
         '#': rootPath,
       },
     },
+    server: {
+      host: '0.0.0.0',
+      open: true,
+    },
   }
 })
