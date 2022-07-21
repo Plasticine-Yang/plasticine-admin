@@ -4,3 +4,8 @@ body,
   padding: 0;
   height: 100vh;
 }
+
+// 有这个类名的时候走深色模式的样式
+.dark {
+  color-scheme: dark;
+}
