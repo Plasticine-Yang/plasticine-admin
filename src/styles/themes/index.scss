@@ -1,0 +1,11 @@
+@use 'default-theme';
+
+@layer base {
+  body {
+    // background
+    @apply bg-[--pa-background-color] dark:bg-[--pa-dark-background-color];
+
+    // text
+    @apply text-[--pa-text-color] dark:text-[--pa-dark-text-color];
+  }
+}

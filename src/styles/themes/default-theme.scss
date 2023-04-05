@@ -1,0 +1,11 @@
+html[data-theme='default']:root {
+  // light mode
+  --pa-background-color: #f4f5fa;
+  --pa-layer-color: #ffffff;
+  --pa-text-color: #544f5a;
+
+  // dark mode
+  --pa-dark-background-color: #28243d;
+  --pa-dark-layer-color: #312d4b;
+  --pa-dark-text-color: #cecce5;
+}
