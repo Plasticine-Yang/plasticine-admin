@@ -1,7 +1,7 @@
 export type ColorModeType = 'dark' | 'light'
 export type ThemeType = 'default'
 
-export interface Settings {
+export interface SettingsState {
   /**
    * @description 色彩模式 - 浅色 or 深色
    * @default 'dark'
@@ -21,7 +21,14 @@ export interface Settings {
   theme: ThemeType
 }
 
-export interface SettingsContextValue {
-  settings: Settings
-  onSettingsChange: (changedSettings: Settings) => void
+export interface SettingsSetters {
+  setColorMode: (colorMode: ColorModeType) => void
+  setShouldColorModeFollowSystem: (shouldColorModeFollowSystem: boolean) => void
+  setTheme: (theme: ThemeType) => void
 }
+
+export interface SettingsActions {
+  toggleColorMode: () => void
+}
+
+export type SettingsStore = SettingsState & SettingsSetters & SettingsActions
