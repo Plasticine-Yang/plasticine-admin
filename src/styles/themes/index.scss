@@ -1,14 +1,14 @@
-@use 'default-theme';
-@use 'primary';
+@use 'default';
+@use 'plasticine-cyan';
 
 @layer base {
   // ====================== background ======================
   body {
-    @apply bg-[--pa-background-color] dark:bg-[--pa-dark-background-color];
+    @apply bg-[--pa-background-color] dark:bg-[--pa-dark-background-color] #{!important};
   }
 
   // ====================== text ======================
-  :is(p, h1, h2, h3, h4, h5, h6, span, button, a) {
+  :is(p, h1, h2, h3, h4, h5, h6, span, a) {
     @apply use-text-color;
   }
 }

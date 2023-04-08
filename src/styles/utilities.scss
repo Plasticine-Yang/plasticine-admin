@@ -1,5 +1,5 @@
 @layer utilities {
-  // layout
+  // ====================== layout ======================
   .flex-row-center {
     @apply flex flex-row justify-center items-center;
   }
@@ -8,12 +8,22 @@
     @apply flex flex-col justify-center items-center;
   }
 
-  // colors
-  .use-layer-bg-color {
-    @apply bg-[--pa-layer-color] dark:bg-[--pa-dark-layer-color];
+  // ====================== colors ======================
+  .use-text-color {
+    @apply text-[--pa-text-color] dark:text-[--pa-dark-text-color] #{!important};
   }
 
-  .use-text-color {
-    @apply text-[--pa-text-color] dark:text-[--pa-dark-text-color];
+  .use-bg-layer {
+    @apply bg-[--pa-layer-color] dark:bg-[--pa-dark-layer-color] #{!important};
+  }
+
+  .use-bg-primary {
+    @apply bg-[--pa-primary-color] dark:bg-[--pa-dark-primary-color]
+      text-[--pa-primary-text-color] dark:text-[--pa-dark-primary-text-color] #{!important};
+  }
+
+  .use-bg-hover-primary {
+    @apply hover:bg-[--pa-primary-hover-color] dark:hover:bg-[--pa-dark-primary-hover-color]
+      hover:text-[--pa-primary-hover-text-color] dark:hover:text-[--pa-dark-primary-hover-text-color] #{!important};
   }
 }

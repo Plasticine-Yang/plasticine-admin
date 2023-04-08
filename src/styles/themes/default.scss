@@ -1,0 +1,19 @@
+html[data-theme='default']:root {
+  // light mode
+  --pa-background-color: #eaebee;
+  --pa-layer-color: #d5d8dd;
+  --pa-text-color: #2f333a;
+  --pa-primary-color: #8c93a1;
+  --pa-primary-text-color: #f5f5f6;
+  --pa-primary-hover-color: #787f90;
+  --pa-primary-hover-text-color: #f5f5f6;
+
+  // dark mode
+  --pa-dark-background-color: #6e7687;
+  --pa-dark-layer-color: #828999;
+  --pa-dark-text-color: #f5f5f6;
+  --pa-dark-primary-color: #b6bac3;
+  --pa-dark-primary-text-color: #474c57;
+  --pa-dark-primary-hover-color: #e0e2e5;
+  --pa-dark-primary-hover-text-color: #474c57;
+}

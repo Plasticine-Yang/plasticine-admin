@@ -1,5 +1,5 @@
 export type ColorModeType = 'dark' | 'light'
-export type ThemeType = 'default' | 'primary'
+export type ThemeType = 'default' | 'plasticine-cyan'
 
 export interface SettingsState {
   /**

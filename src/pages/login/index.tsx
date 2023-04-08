@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button } from '@chakra-ui/react'
 import { useStore } from 'zustand'
 
 import { LoginForm } from '@/page-components/login'
@@ -9,19 +9,16 @@ const Login: React.FC = () => {
   const setShouldColorModeFollowSystem = useStore(settingsStore, (settings) => settings.setShouldColorModeFollowSystem)
   const setTheme = useStore(settingsStore, (settings) => settings.setTheme)
 
-  const btnClassName =
-    'bg-[--pa-primary-color] dark:bg-[--pa-dark-primary-color] hover:bg-[--pa-primary-color] dark:hover:bg-[--pa-dark-primary-color] use-text-color'
-
   return (
     <Box className="flex-col-center gap-4 min-h-screen">
       <LoginForm />
-      <Button className={btnClassName} variant="contained" onClick={toggleColorMode}>
+      <Button className="btn-primary">default</Button>
+      <Button className="btn-primary" variant="contained" onClick={toggleColorMode}>
         切换深浅色模式
       </Button>
 
       <Button
-        className={btnClassName}
-        variant="contained"
+        className="btn-primary"
         onClick={() => {
           setShouldColorModeFollowSystem(true)
         }}
@@ -30,8 +27,7 @@ const Login: React.FC = () => {
       </Button>
 
       <Button
-        className={btnClassName}
-        variant="contained"
+        className="btn-primary"
         onClick={() => {
           setShouldColorModeFollowSystem(false)
         }}
@@ -40,8 +36,7 @@ const Login: React.FC = () => {
       </Button>
 
       <Button
-        className={btnClassName}
-        variant="contained"
+        className="btn-primary"
         onClick={() => {
           setTheme('default')
         }}
@@ -50,13 +45,12 @@ const Login: React.FC = () => {
       </Button>
 
       <Button
-        className={btnClassName}
-        variant="contained"
+        className="btn-primary"
         onClick={() => {
-          setTheme('primary')
+          setTheme('plasticine-cyan')
         }}
       >
-        切换主题 - primary
+        切换主题 - plasticine-cyan
       </Button>
     </Box>
   )

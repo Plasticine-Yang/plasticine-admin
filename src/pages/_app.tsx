@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { ChakraProvider } from '@chakra-ui/react'
 
 import { useThemeSystemLogic } from '@/logics'
 import '@/styles/globals.scss'
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
-      <Component {...pageProps} />
+      <ChakraProvider resetCSS={false}>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   )
 }
