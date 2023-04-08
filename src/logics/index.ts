@@ -1,1 +1,1 @@
-export * from './useColorModeAndThemeLogic'
+export * from './useThemeSystemLogic'

@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
+import { type StoreApi, useStore } from 'zustand'
 import { shallow } from 'zustand/shallow'
 
-import { useSettings } from '@/stores'
+import type { SettingsStore } from '@/types'
 
-export function useColorModeAndThemeLogic() {
-  const { colorMode, theme, shouldColorModeFollowSystem } = useSettings(
+export function useThemeSystemLogic(settingsStore: StoreApi<SettingsStore>) {
+  const { colorMode, theme, shouldColorModeFollowSystem } = useStore(
+    settingsStore,
     (settings) => ({
       colorMode: settings.colorMode,
       theme: settings.theme,
@@ -13,7 +15,7 @@ export function useColorModeAndThemeLogic() {
     shallow,
   )
 
-  const setColorMode = useSettings((settings) => settings.setColorMode)
+  const setColorMode = useStore(settingsStore, (settings) => settings.setColorMode)
 
   // colorMode 变化时修改 html 标签的 `data-color-mode`
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { createStore } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
@@ -10,33 +10,42 @@ const initialSettingsState: SettingsState = {
   theme: 'default',
 }
 
-export const useSettings = create<SettingsStore>()(
-  devtools(
-    immer((set, get) => ({
-      ...initialSettingsState,
+export const createSettingsStore = () => {
+  const storeName = 'SettingsStore'
 
-      // setters
-      setColorMode(colorMode) {
-        set((state) => {
-          state.colorMode = colorMode
-        })
-      },
-      setShouldColorModeFollowSystem(shouldColorModeFollowSystem) {
-        set((state) => {
-          state.shouldColorModeFollowSystem = shouldColorModeFollowSystem
-        })
-      },
-      setTheme(theme) {
-        set((state) => {
-          state.theme = theme
-        })
-      },
+  return createStore<SettingsStore>()(
+    immer(
+      devtools(
+        (set, get) => ({
+          ...initialSettingsState,
 
-      // actions
-      toggleColorMode() {
-        const { colorMode, setColorMode } = get()
-        setColorMode(colorMode === 'dark' ? 'light' : 'dark')
-      },
-    })),
-  ),
-)
+          // setters
+          setColorMode(colorMode) {
+            set((state) => {
+              state.colorMode = colorMode
+            })
+          },
+          setShouldColorModeFollowSystem(shouldColorModeFollowSystem) {
+            set((state) => {
+              state.shouldColorModeFollowSystem = shouldColorModeFollowSystem
+            })
+          },
+          setTheme(theme) {
+            set((state) => {
+              state.theme = theme
+            })
+          },
+
+          // actions
+          toggleColorMode() {
+            const { colorMode, setColorMode } = get()
+            setColorMode(colorMode === 'dark' ? 'light' : 'dark')
+          },
+        }),
+        { name: storeName },
+      ),
+    ),
+  )
+}
+
+export const settingsStore = createSettingsStore()

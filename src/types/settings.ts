@@ -1,5 +1,5 @@
 export type ColorModeType = 'dark' | 'light'
-export type ThemeType = 'default'
+export type ThemeType = 'default' | 'primary'
 
 export interface SettingsState {
   /**

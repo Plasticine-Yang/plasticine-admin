@@ -12,4 +12,8 @@
   .use-layer-bg-color {
     @apply bg-[--pa-layer-color] dark:bg-[--pa-dark-layer-color];
   }
+
+  .use-text-color {
+    @apply text-[--pa-text-color] dark:text-[--pa-dark-text-color];
+  }
 }
