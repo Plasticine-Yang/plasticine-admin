@@ -46,9 +46,8 @@ export const createSettingsStore = () => {
           },
 
           // actions
-          toggleColorMode() {
-            const { colorMode, setColorMode } = get()
-            setColorMode(colorMode === 'dark' ? 'light' : 'dark')
+          reset() {
+            set(initialSettingsState)
           },
         }),
         { name: storeName },

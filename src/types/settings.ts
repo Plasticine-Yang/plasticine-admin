@@ -34,7 +34,7 @@ export interface SettingsSetters {
 }
 
 export interface SettingsActions {
-  toggleColorMode: () => void
+  reset: () => void
 }
 
 export type SettingsStore = SettingsState & SettingsGetters & SettingsSetters & SettingsActions

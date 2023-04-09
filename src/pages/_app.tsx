@@ -1,13 +1,16 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useEffect } from 'react'
 
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
+import Settings from '@/components/Settings'
 import { useMuiTheme } from '@/hooks'
+import { useColorModeFollowSystemLogic } from '@/logics'
+import { settingsStore } from '@/stores'
 import '@/styles/globals.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
+  useColorModeFollowSystemLogic(settingsStore)
   const muiTheme = useMuiTheme()
 
   return (
@@ -19,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
         <Component {...pageProps} />
+        <Settings />
       </ThemeProvider>
     </>
   )
