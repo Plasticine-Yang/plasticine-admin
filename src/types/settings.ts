@@ -1,5 +1,7 @@
+import type { PaletteOptions, Theme, ThemeOptions } from '@mui/material'
+
 export type ColorModeType = 'dark' | 'light'
-export type ThemeType = 'default' | 'plasticine-cyan'
+export type ThemeType = 'default'
 
 export interface SettingsState {
   /**
@@ -21,6 +23,10 @@ export interface SettingsState {
   theme: ThemeType
 }
 
+export interface SettingsGetters {
+  getMuiTheme: () => Theme
+}
+
 export interface SettingsSetters {
   setColorMode: (colorMode: ColorModeType) => void
   setShouldColorModeFollowSystem: (shouldColorModeFollowSystem: boolean) => void
@@ -31,4 +37,8 @@ export interface SettingsActions {
   toggleColorMode: () => void
 }
 
-export type SettingsStore = SettingsState & SettingsSetters & SettingsActions
+export type SettingsStore = SettingsState & SettingsGetters & SettingsSetters & SettingsActions
+
+export type GetDesignTokens = (theme: ThemeType, colorMode: ColorModeType) => ThemeOptions
+export type GetPaletteTokens = (theme: ThemeType, colorMode: ColorModeType) => PaletteOptions
+export type DefinePaletteTokens = (colorMode: ColorModeType) => PaletteOptions

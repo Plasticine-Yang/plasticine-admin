@@ -1,14 +1,14 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ChakraProvider } from '@chakra-ui/react'
+import { useEffect } from 'react'
 
-import { useThemeSystemLogic } from '@/logics'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+
+import { useMuiTheme } from '@/hooks'
 import '@/styles/globals.scss'
-import { settingsStore } from '@/stores'
 
 export default function App({ Component, pageProps }: AppProps) {
-  // 主题系统逻辑
-  useThemeSystemLogic(settingsStore)
+  const muiTheme = useMuiTheme()
 
   return (
     <>
@@ -16,9 +16,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
-      <ChakraProvider resetCSS={false}>
+      <ThemeProvider theme={muiTheme}>
+        <CssBaseline />
         <Component {...pageProps} />
-      </ChakraProvider>
+      </ThemeProvider>
     </>
   )
 }

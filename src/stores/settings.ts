@@ -2,7 +2,9 @@ import { createStore } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 
+import { getDesignTokens } from '@/themes'
 import type { SettingsState, SettingsStore } from '@/types'
+import { createTheme } from '@mui/material'
 
 const initialSettingsState: SettingsState = {
   colorMode: 'dark',
@@ -18,6 +20,13 @@ export const createSettingsStore = () => {
       devtools(
         (set, get) => ({
           ...initialSettingsState,
+
+          // getters
+          getMuiTheme() {
+            const { theme, colorMode } = get()
+            const muiTheme = createTheme(getDesignTokens(theme, colorMode))
+            return muiTheme
+          },
 
           // setters
           setColorMode(colorMode) {
