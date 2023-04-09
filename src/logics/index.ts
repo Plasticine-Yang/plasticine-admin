@@ -1,1 +1,1 @@
-export * from './useThemeSystemLogic'
+export * from './useColorModeFollowSystemLogic'
