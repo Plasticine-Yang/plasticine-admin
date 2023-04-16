@@ -15,13 +15,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { useCallback, useState, type ChangeEvent, useEffect } from 'react'
+import { useCallback, useEffect, useState, type ChangeEvent, type KeyboardEvent } from 'react'
 
+import { ROUTE_HOME, STORAGE_USER_INFO } from '@/constants'
 import { useBoolean, useInputValidate } from '@/hooks'
 import { ApiLoginRequestData, ApiLoginResponseData } from '@/types/api'
 import { apiFetcher, storage } from '@/utils'
 import { useRouter } from 'next/router'
-import { ROUTE_HOME, STORAGE_USER_INFO } from '@/constants'
 
 export const LoginForm: React.FC = () => {
   const router = useRouter()
@@ -66,7 +66,7 @@ export const LoginForm: React.FC = () => {
     [validatePassword],
   )
 
-  const handleLoginBtnClick = useCallback(async () => {
+  const handleLoginFormSubmit = useCallback(async () => {
     let allowSubmit = true
 
     if (!validateUsername(username)) {
@@ -91,11 +91,14 @@ export const LoginForm: React.FC = () => {
     }
   }, [password, router, username, validatePassword, validateUsername])
 
-  useEffect(() => {
-    if (storage.getItem(STORAGE_USER_INFO)) {
-      router.replace(ROUTE_HOME)
-    }
-  }, [router])
+  const handleEnterKeyDownToSubmitLoginForm = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        handleLoginFormSubmit()
+      }
+    },
+    [handleLoginFormSubmit],
+  )
 
   return (
     <Card className="max-w-md p-4">
@@ -125,6 +128,7 @@ export const LoginForm: React.FC = () => {
             error={usernameError}
             helperText={usernameErrorMsg}
             onChange={handleUsernameInputChange}
+            onKeyDown={handleEnterKeyDownToSubmitLoginForm}
           />
 
           {/* password */}
@@ -143,6 +147,7 @@ export const LoginForm: React.FC = () => {
                 </InputAdornment>
               }
               onChange={handlePasswordInputChange}
+              onKeyDown={handleEnterKeyDownToSubmitLoginForm}
             />
             <FormHelperText>{passwordErrorMsg}</FormHelperText>
           </FormControl>
@@ -154,7 +159,7 @@ export const LoginForm: React.FC = () => {
           className="w-full"
           variant="contained"
           loading={submitButtonLoading}
-          onClick={handleLoginBtnClick}
+          onClick={handleLoginFormSubmit}
         >
           Sign In
         </LoadingButton>

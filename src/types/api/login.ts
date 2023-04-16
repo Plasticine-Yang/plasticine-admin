@@ -6,4 +6,5 @@ export interface ApiLoginRequestData {
 export interface ApiLoginResponseData {
   userId: string
   username: string
+  token: string
 }
