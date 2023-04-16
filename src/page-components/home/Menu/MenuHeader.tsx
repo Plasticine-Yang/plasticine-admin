@@ -14,7 +14,7 @@ const MenuHeader: React.FC = () => {
   )
 
   return (
-    <Container className="flex justify-between items-center bg-cyan-500">
+    <Container className="flex justify-between items-center">
       <Box className="flex items-center">
         <BoltIcon fontSize="large" />
         {expandedInView && <Typography variant="h5">Plasticine</Typography>}
