@@ -1,6 +1,6 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { LoadingButton } from '@mui/lab'
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -15,14 +15,20 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { useCallback, useState, type ChangeEvent, useEffect } from 'react'
 
 import { useBoolean, useInputValidate } from '@/hooks'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ApiLoginRequestData, ApiLoginResponseData } from '@/types/api'
+import { apiFetcher, storage } from '@/utils'
+import { useRouter } from 'next/router'
+import { ROUTE_HOME, STORAGE_USER_INFO } from '@/constants'
 
 export const LoginForm: React.FC = () => {
+  const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordHidden, , togglePasswordHidden] = useBoolean(true)
+  const [submitButtonLoading, setSubmitButtonLoading] = useState(false)
 
   const [usernameError, usernameErrorMsg, validateUsername] = useInputValidate({
     rules: [
@@ -60,7 +66,7 @@ export const LoginForm: React.FC = () => {
     [validatePassword],
   )
 
-  const handleLoginBtnClick = useCallback(() => {
+  const handleLoginBtnClick = useCallback(async () => {
     let allowSubmit = true
 
     if (!validateUsername(username)) {
@@ -72,9 +78,24 @@ export const LoginForm: React.FC = () => {
     }
 
     if (allowSubmit) {
-      alert('success')
+      setSubmitButtonLoading(true)
+
+      const userInfo = await apiFetcher.post<ApiLoginResponseData, ApiLoginRequestData>('/login', {
+        username,
+        password,
+      })
+      storage.setItem(STORAGE_USER_INFO, userInfo)
+      router.replace(ROUTE_HOME)
+
+      setSubmitButtonLoading(false)
     }
-  }, [password, username, validatePassword, validateUsername])
+  }, [password, router, username, validatePassword, validateUsername])
+
+  useEffect(() => {
+    if (storage.getItem(STORAGE_USER_INFO)) {
+      router.replace(ROUTE_HOME)
+    }
+  }, [router])
 
   return (
     <Card className="max-w-md p-4">
@@ -129,9 +150,14 @@ export const LoginForm: React.FC = () => {
       </CardContent>
 
       <CardActions className="px-4">
-        <Button className="w-full" variant="contained" onClick={handleLoginBtnClick}>
+        <LoadingButton
+          className="w-full"
+          variant="contained"
+          loading={submitButtonLoading}
+          onClick={handleLoginBtnClick}
+        >
           Sign In
-        </Button>
+        </LoadingButton>
       </CardActions>
     </Card>
   )
