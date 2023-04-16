@@ -1,2 +1,2 @@
-export * from './page-loading'
+export * from './menu'
 export * from './settings'
