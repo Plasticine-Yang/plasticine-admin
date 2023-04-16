@@ -1,9 +1,9 @@
 import BoltIcon from '@mui/icons-material/Bolt'
 import { Box, Container, Radio, Typography } from '@mui/material'
+import { useCallback } from 'react'
 import { useStore } from 'zustand'
 
 import { menuStore } from '@/stores'
-import { useCallback } from 'react'
 
 const MenuHeader: React.FC = () => {
   const expanded = useStore(menuStore, (store) => store.expanded)
